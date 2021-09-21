@@ -10,7 +10,8 @@ int clean_suite_main(void) {
     return 0;
 }
 
-void test_dummy(void) {
+void test_config_read(void) {
+    CU_ASSERT(config_read() == 0);
 }
 
 
@@ -28,7 +29,7 @@ int main() {
         return CU_get_error();
     }
 
-    if ((NULL == CU_add_test(pSuite, "dummy test()", test_dummy))) {
+    if ((NULL == CU_add_test(pSuite, "test config_read()", test_config_read))) {
         CU_cleanup_registry();
         return CU_get_error();
     }
