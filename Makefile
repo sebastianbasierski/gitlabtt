@@ -39,6 +39,10 @@ $(TEST_EXE): $(OBJ_TEST) | $(BIN_DIR)
 $(OBJ_DIR)/%.o: $(TEST_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CPPFLAGS) $(CFLAGS_TEST) -c $< -o $@
 
+test_run: test
+	bin/test
+
+
 clean:
 	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
 
