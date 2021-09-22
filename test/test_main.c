@@ -13,11 +13,19 @@ int clean_suite_main(void) {
 void test_config_read(void) {
     struct config_t config;
 
-    // prep env
+    // file exists & is valid
     strncpy(config.fileName, "temp.txt", FILENAME_LENGTH);
-
     CU_ASSERT(config_read(&config) == 0);
-    CU_ASSERT(strncmp(config.key, "testkey", strlen("testkey")) == 0);
+    CU_ASSERT(strncmp(config.key, "12345678901234567890", strlen("testkey")) == 0);
+
+    // file does not exists
+    strncpy(config.fileName, "tempa.txt", FILENAME_LENGTH);
+    CU_ASSERT(config_read(&config) == EEXIST);
+
+    // file exists & empty
+    strncpy(config.fileName, "tempb.txt", FILENAME_LENGTH);
+    CU_ASSERT(config_read(&config) == 0);
+    CU_ASSERT(strncmp(config.key, "testkey", strlen("testkey")) != 0);
 }
 
 

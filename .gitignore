@@ -55,3 +55,6 @@ dkms.conf
 # dirs
 obj
 bin
+reports/
+temp/
+*.gcov

@@ -1,8 +1,10 @@
 #ifndef _structs_h_
 #define _structs_h_
 
+#include <errno.h>
+
 #define FILENAME_LENGTH 64
-#define KEY_LENGTH      64
+#define KEY_LENGTH      20
 
 struct config_t {
     char fileName[FILENAME_LENGTH];
