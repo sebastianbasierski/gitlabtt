@@ -12,7 +12,7 @@ TEST := $(wildcard $(TEST_DIR)/*.c)
 OBJ_TEST := $(patsubst $(TEST_DIR)/%.c, $(OBJ_DIR)/%.o, $(TEST))
 
 CPPFLAGS := -Iinclude -MMD -MP
-CFLAGS   := -Wall
+CFLAGS   := -Wall -g
 CFLAGS_TEST   := $(CFLAGS) -Dmain=_main_disabled
 LDFLAGS  := -Llib
 LDLIBS   := -lm

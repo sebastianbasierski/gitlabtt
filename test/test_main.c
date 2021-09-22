@@ -11,7 +11,13 @@ int clean_suite_main(void) {
 }
 
 void test_config_read(void) {
-    CU_ASSERT(config_read() == 0);
+    struct config_t config;
+
+    // prep env
+    strncpy(config.fileName, "temp.txt", FILENAME_LENGTH);
+
+    CU_ASSERT(config_read(&config) == 0);
+    CU_ASSERT(strncmp(config.key, "testkey", strlen("testkey")) == 0);
 }
 
 
