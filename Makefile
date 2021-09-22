@@ -39,6 +39,15 @@ $(TEST_EXE): $(OBJ_TEST) | $(BIN_DIR)
 $(OBJ_DIR)/%.o: $(TEST_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CPPFLAGS) $(CFLAGS_TEST) -c $< -o $@
 
+cppcheck:
+	cppcheck $(SRC_DIR)
+
+valgrind:
+	valgrind $(EXE)
+
+flawfinder:
+	flawfinder $(SRC_DIR)
+
 clean:
 	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
 
